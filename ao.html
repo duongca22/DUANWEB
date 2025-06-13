@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trang Áo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="ao.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-logo">
+      <img src="img/logo.svg" alt="" />
+    </div>
+    <div class="navbar-menu">
+      <a href="#">HÀNG MỚI</a>
+      <a href="ao.html">ÁO</a>
+      <a href="#">QUẦN</a>
+      <a href="#">PHỤ KIỆN</a>
+      <a href="#">GIÁ TỐT</a>
+      <a href="#">CỬA HÀNG</a>
+    </div>
+    <div class="navbar-search">
+      <input type="text" id="searchInput" placeholder="Bạn tìm gì..." />
+      <i class="icon-search">🔍</i>
+    </div>
+    <div class="navbar-icons">
+      <i class="far fa-heart"></i>
+      <i class="far fa-user"></i>
+      <i class="fas fa-bag-shopping"></i>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span><a href="index.html">Trang chủ</a></span> |
+    <span>ÁO</span> |
+    <span><strong>Áo Sơ Mi</strong></span>
+  </div>
+
+  <!-- Banner hình ảnh -->
+  <div class="img-banner">
+    <img src="img/ao_so_mi_021024.jpg" alt="Áo sơ mi OWEN" />
+  </div>
+
+
+  <div class="main-section">
+    <aside class="sidebar">
+      <h4>HÀNG MỚI VỀ</h4>
+      <h4>BỘ SƯU TẬP</h4>
+      <ul>
+        <li>IKIGAI</li>
+        <li>KAIZEN</li>
+        <li>BE CONFIDENT</li>
+        <li>INNER RISE</li>
+        <li>INSPIRED BY THE CITY</li>
+        <li>JOY THE BEAT</li>
+        <li>BST BẠC HÀ</li>
+        <li>RENU</li>
+        <li>CHANGE VIEW POINT</li>
+      </ul>
+      <h4>BST Retro vacation</h4>
+      <h4>GIÁ TỐT</h4>
+      <ul>
+        <li>Polo - Tshirt</li>
+        <li>Quần giá tốt</li>
+        <li>Áo sơ mi</li>
+      </ul>
+      <h4>ÁO</h4>
+      <ul>
+        <li>Áo Polo</li>
+        <li>Áo Sơ Mi</li>
+        <li>Áo T-Shirt</li>
+      </ul>
+    </aside>
+
+   
+    <div class="product-content" style="flex: 1;">
+      <div class="sort-bar" style="display: flex; align-items: center; justify-content: flex-end; margin-bottom: 20px;">
+        <label for="sapXepTheoGia">Sắp xếp:</label>
+        <select id="sapXepTheoGia" style="margin-left: 10px; padding: 6px 12px;">
+          <option value="">-- Chọn --</option>
+          <option value="asc">Giá tăng dần</option>
+          <option value="desc">Giá giảm dần</option>
+        </select>
+      </div>
+
+      <section class="product-area" id="productList">
+        <!-- Đổ dữ liệu sp -->
+      </section>
+    </div>
+  </div>
+
+  <script src="product.js"></script>
+  <script>
+    const productList = document.getElementById("productList");
+
+    function renderProducts(products) {
+      productList.innerHTML = "";
+      products.forEach(p => {
+        const el = document.createElement("div");
+        el.className = "product-item";
+        el.innerHTML = `
+          <div class="product-image">
+            <img src="${p.image}" alt="${p.name}" />
+            <button class="buy-btn">MUA NGAY</button>
+          </div>
+          <h5>${p.name}</h5>
+          <p>${p.price.toLocaleString()} ₫</p>
+          <i class="fa-regular fa-heart heart-icon"></i>
+        `;
+        productList.appendChild(el);
+      });
+    }
+
+    renderProducts(sanPhamNoiBat);
+
+    const oSapXepTheoGia = document.getElementById("sapXepTheoGia");
+
+    oSapXepTheoGia.addEventListener("change", () => {
+      const giaTriChon = oSapXepTheoGia.value;
+      let danhSachSapXep = [...sanPhamNoiBat];
+
+      if (giaTriChon === "asc") {
+        danhSachSapXep.sort((a, b) => a.price - b.price);
+      } else if (giaTriChon === "desc") {
+        danhSachSapXep.sort((a, b) => b.price - a.price);
+      }
+
+      renderProducts(danhSachSapXep);
+    });
+  </script>
+</body>
+</html>
