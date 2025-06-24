@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="giohang.css">
+</head>
+<body>  
+    <header class="navbar">
+        <div class="navbar-logo">
+            <img src="img/logo.svg" alt="">
+        </div>
+        <div class="navbar-menu">
+            <a href="#">HÀNG MỚI</a>
+            <a href="ao.html">ÁO</a>
+            <a href="#">QUẦN</a>
+            <a href="#">PHỤ KIỆN</a>
+            <a href="#">GIÁ TỐT</a>
+            <a href="#">CỬA HÀNG</a>
+        </div>
+        <div class="navbar-search">
+        <input type="text" id="searchInput" placeholder="Bạn tìm gì..." />
+        <i class="icon-search">🔍</i>
+      </div>
+
+        <div class="navbar-icons">
+            <i class="far fa-heart"></i>
+            <i class="far fa-user"></i>
+            <i class="fas fa-bag-shopping"></i>
+  </div>
+    </header>
+        <main class="cart-page">
+        <h1>Giỏ hàng của bạn</h1>
+        <div class="cart-wrapper">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Ảnh</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                        <th>Xóa</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-body">
+                    <!-- Dữ liệu sẽ được đổ từ JS -->
+                </tbody>
+            </table>
+            <div class="cart-summary">
+                <p>Tổng cộng: <span id="total-price">0₫</span></p>
+                <a href="checkout.html" class="checkout-btn">Tiến hành thanh toán</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="giohang.js"></script>
+</body>
+</html>
+
+
+   

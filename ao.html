@@ -100,15 +100,16 @@
       products.forEach(p => {
         const el = document.createElement("div");
         el.className = "product-item";
-        el.innerHTML = `
-          <div class="product-image">
-            <img src="${p.image}" alt="${p.name}" />
-            <button class="buy-btn">MUA NGAY</button>
-          </div>
-          <h5>${p.name}</h5>
-          <p>${p.price.toLocaleString()} ₫</p>
-          <i class="fa-regular fa-heart heart-icon"></i>
-        `;
+          el.innerHTML = `
+      <div class="product-image">
+        <img src="${p.image}" alt="${p.name}" />
+        <button class="buy-btn" onclick="location.href='chitiet.html?id=${p.id}'">MUA NGAY</button>
+      </div>
+      <h5>${p.name}</h5>
+      <p>${p.price.toLocaleString()} ₫</p>
+      <i class="fa-regular fa-heart heart-icon"></i>
+    `;
+
         productList.appendChild(el);
       });
     }

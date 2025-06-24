@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chi tiết sản phẩm</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="chitiet.css">
+</head>
+<body>
+
+  <div class="breadcrumb">
+    <a href="index.html">Trang chủ</a> | <a href="ao.html">Áo</a> | <strong id="product-name-small">Chi tiết</strong>
+  </div>
+
+  <div class="container">
+    <!-- Cột trái: Hình ảnh -->
+    <div class="left-column">
+      <img id="main-img" class="main-img" src="" alt="Sản phẩm">
+      <div class="thumbnail-list" id="thumbnails"></div>
+    </div>
+
+    <!-- Cột phải: Thông tin -->
+    <div class="right-column">
+      <div class="product-title" id="product-name"></div>
+      <div class="product-code" id="product-code"></div>
+      <div class="product-price" id="product-price"></div>
+
+      <div><strong>Màu sắc:</strong>
+        <span id="color-box" class="color-box"></span>
+      </div>
+
+      <div style="margin-top: 15px;"><strong>Kích cỡ:</strong></div>
+      <div class="size-options" id="size-options" style="margin-bottom: 20px;"></div>
+
+      <label>Số lượng:
+        <input type="number" id="product-qty" value="1" min="1" style="width: 60px; margin-left: 10px;">
+      </label>
+
+      <br>
+      <button class="btn-add" onclick="addToCart()">THÊM VÀO GIỎ HÀNG</button>
+
+      <div class="description" id="product-description"></div>
+    </div>
+  </div>
+
+  <script src="product.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const productId = parseInt(params.get("id"));
+    const product = sanPhamNoiBat.find(p => p.id === productId);
+
+    if (!product) {
+      document.body.innerHTML = "<p>Không tìm thấy sản phẩm</p>";
+    } else {
+      // Hiển thị dữ liệu
+      document.getElementById("main-img").src = product.images[0];
+      document.getElementById("product-name").textContent = product.name;
+      document.getElementById("product-name-small").textContent = product.name;
+      document.getElementById("product-code").textContent = "Mã SP: " + product.code;
+      document.getElementById("product-price").textContent = product.price.toLocaleString() + " ₫";
+      document.getElementById("product-description").textContent = product.description;
+      document.getElementById("color-box").style.backgroundColor = product.color;
+
+      const sizeOptions = document.getElementById("size-options");
+      product.sizes.forEach(size => {
+        const btn = document.createElement("button");
+        btn.textContent = size;
+        btn.onclick = () => {
+          document.querySelectorAll(".size-options button").forEach(b => b.style.border = "1px solid #ccc");
+          btn.style.border = "2px solid black";
+          selectedSize = size;
+        };
+        sizeOptions.appendChild(btn);
+      });
+
+      // Thumbnail ảnh phụ
+      const thumbList = document.getElementById("thumbnails");
+      product.images.forEach(img => {
+        const thumb = document.createElement("img");
+        thumb.src = img;
+        thumb.onclick = () => {
+          document.getElementById("main-img").src = img;
+        };
+        thumbList.appendChild(thumb);
+      });
+    }
+
+    let selectedSize = null;
+
+    function addToCart() {
+      const qty = parseInt(document.getElementById("product-qty").value);
+      if (!selectedSize) return alert("Vui lòng chọn kích cỡ!");
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const existing = cart.find(i => i.id === product.id && i.size === selectedSize);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({
+          ...product,
+          size: selectedSize,
+          qty
+        });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Đã thêm vào giỏ hàng!");
+    }
+  </script>
+
+</body>
+</html>
