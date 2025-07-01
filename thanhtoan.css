@@ -1,0 +1,210 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+}
+
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+h2 {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 24px;
+}
+
+form input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+#order-summary {
+  margin-top: 15px;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+}
+
+#order-summary div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+#confirm-btn {
+  width: 100%;
+  padding: 14px;
+  background: #28a745;
+  color: white;
+  font-size: 18px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+#confirm-btn:hover {
+  background: #218838;
+}
+
+#message {
+  color: green;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.order-success-box {
+  background: #f6ffed;
+  border: 2px solid #52c41a;
+  border-radius: 16px;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 6px 15px rgba(82, 196, 26, 0.1);
+  font-size: 18px;
+  color: #222;
+  overflow-x: auto;
+  max-width: 100%;
+  min-width: 300px; /* Giảm min-width để phù hợp hơn với mobile */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-success-title {
+  color: #52c41a;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.customer-info,
+.order-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-info h3,
+.order-info h3 {
+  margin: 18px 0 10px 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.customer-info p {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+
+.order-table-wrapper {
+  overflow-x: auto;
+  margin-top: 12px;
+  max-width: 100%;
+}
+
+.order-table {
+  width: 100%;
+  min-width: 300px; /* Giảm min-width để phù hợp với mobile */
+  border-collapse: collapse;
+  font-size: 18px;
+  background: #f6ffed;
+}
+
+.order-table th,
+.order-table td {
+  border: 1px solid #b7eb8f;
+  padding: 10px 12px;
+  text-align: left;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.order-table th {
+  background: #eafff1;
+  color: #389e0d;
+  font-weight: bold;
+}
+
+.order-table tr:last-child td {
+  font-weight: bold;
+  background: #eafff1;
+  color: #222;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+    max-width: 100%;
+    margin: 15px;
+  }
+
+  #order-summary div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-success-box {
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .order-table th,
+  .order-table td {
+    padding: 6px 8px;
+    font-size: 14px;
+  }
+
+  .customer-info p,
+  .order-info h3 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .order-success-box {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .order-success-title {
+    font-size: 20px;
+  }
+
+  .customer-info h3,
+  .order-info h3 {
+    font-size: 18px;
+  }
+
+  .order-table th,
+  .order-table td {
+    padding: 4px 6px;
+    font-size: 12px;
+  }
+
+  #confirm-btn {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  #message {
+    font-size: 16px;
+    margin-top: 15px;
+  }
+}

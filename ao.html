@@ -6,75 +6,58 @@
   <title>Trang Áo</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="ao.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="navbar-logo">
-      <img src="img/logo.svg" alt="" />
-    </div>
-    <div class="navbar-menu">
-      <a href="#">HÀNG MỚI</a>
-      <a href="ao.html">ÁO</a>
-      <a href="#">QUẦN</a>
-      <a href="#">PHỤ KIỆN</a>
-      <a href="#">GIÁ TỐT</a>
-      <a href="#">CỬA HÀNG</a>
-    </div>
-    <div class="navbar-search">
-      <input type="text" id="searchInput" placeholder="Bạn tìm gì..." />
-      <i class="icon-search">🔍</i>
-    </div>
-    <div class="navbar-icons">
-      <i class="far fa-heart"></i>
-      <i class="far fa-user"></i>
-      <i class="fas fa-bag-shopping"></i>
-    </div>
-  </header>
+    <header class="navbar">
+        <div class="navbar-logo">
+               <a href="index.html"><img src="img/logo.svg" alt=""></a>
+        </div>
+        <div class="navbar-menu">
+            <a href="index.html">TRANG CHỦ</a>
+            <a href="ao.html">ÁO</a>
+            <a href="lienhe.html">LIÊN HỆ</a>
+        </div>
+        <div class="navbar-search">
+          <input type="text" id="searchInput" placeholder="Bạn tìm gì..." />
+          <i class="icon-search">🔍</i>
+        </div>
+        <div class="navbar-icons">
+            <i class="far fa-heart"></i>
+            <i class="far fa-user"></i>
+            <a href="giohang.html"><i  class="fas fa-bag-shopping"></i></a>
+        </div>
+    </header>
 
   <!-- Breadcrumb -->
   <div class="breadcrumb">
     <span><a href="index.html">Trang chủ</a></span> |
-    <span>ÁO</span> |
+    <a href="ao.html"><span>ÁO</span> |</a>
     <span><strong>Áo Sơ Mi</strong></span>
   </div>
 
   <!-- Banner hình ảnh -->
   <div class="img-banner">
     <img src="img/ao_so_mi_021024.jpg" alt="Áo sơ mi OWEN" />
+    <div class="banner-text">
+      <h1>Áo OWEN Nam</h1>
+      <p>Áo Owen nam đẹp, kiểu dáng thanh lịch cùng chất liệu cao cấp sẽ giúp bạn xây dựng phong cách lịch lãm, thu hút mọi ánh nhìn.</p>
+    </div>
   </div>
-
 
   <div class="main-section">
     <aside class="sidebar">
       <h4>HÀNG MỚI VỀ</h4>
-      <h4>BỘ SƯU TẬP</h4>
-      <ul>
-        <li>IKIGAI</li>
-        <li>KAIZEN</li>
-        <li>BE CONFIDENT</li>
-        <li>INNER RISE</li>
-        <li>INSPIRED BY THE CITY</li>
-        <li>JOY THE BEAT</li>
-        <li>BST BẠC HÀ</li>
-        <li>RENU</li>
-        <li>CHANGE VIEW POINT</li>
-      </ul>
-      <h4>BST Retro vacation</h4>
-      <h4>GIÁ TỐT</h4>
-      <ul>
-        <li>Polo - Tshirt</li>
-        <li>Quần giá tốt</li>
-        <li>Áo sơ mi</li>
-      </ul>
       <h4>ÁO</h4>
-      <ul>
-        <li>Áo Polo</li>
-        <li>Áo Sơ Mi</li>
-        <li>Áo T-Shirt</li>
+      <ul id="categoryList">
+        <li data-category="all" class="active">Tất cả</li>
+        <li data-category="Polo">Áo Polo</li>
+        <li data-category="Sơ Mi">Áo Sơ Mi</li>
+        <li data-category="T-Shirt">Áo T-Shirt</li>
+        <li data-category="Hoodie">Áo Hoodie</li>
       </ul>
     </aside>
 
-   
     <div class="product-content" style="flex: 1;">
       <div class="sort-bar" style="display: flex; align-items: center; justify-content: flex-end; margin-bottom: 20px;">
         <label for="sapXepTheoGia">Sắp xếp:</label>
@@ -84,7 +67,6 @@
           <option value="desc">Giá giảm dần</option>
         </select>
       </div>
-
       <section class="product-area" id="productList">
         <!-- Đổ dữ liệu sp -->
       </section>
@@ -92,44 +74,157 @@
   </div>
 
   <script src="product.js"></script>
-  <script>
-    const productList = document.getElementById("productList");
+  <script>  
+  // Biến lưu loại áo & từ khóa hiện tại
+  let selectedCategory = "all";
+  let currentKeyword = "";
+  let currentSort = ""; // asc, desc, hoặc ""
 
-    function renderProducts(products) {
-      productList.innerHTML = "";
-      products.forEach(p => {
-        const el = document.createElement("div");
-        el.className = "product-item";
-          el.innerHTML = `
-      <div class="product-image">
-        <img src="${p.image}" alt="${p.name}" />
-        <button class="buy-btn" onclick="location.href='chitiet.html?id=${p.id}'">MUA NGAY</button>
-      </div>
-      <h5>${p.name}</h5>
-      <p>${p.price.toLocaleString()} ₫</p>
-      <i class="fa-regular fa-heart heart-icon"></i>
-    `;
+  const productList = document.getElementById("productList");
 
-        productList.appendChild(el);
-      });
+  // Hàm thêm sản phẩm vào giỏ hàng
+  function addToCart(productId) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const product = sanPhamNoiBat.find(p => p.id === productId);
+    if (!product) {
+      console.error("Sản phẩm không tồn tại:", productId);
+      return;
     }
+    let existingItem = cart.find(item => item.id === productId);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    console.log("Đã thêm vào giỏ hàng:", product);
+    alert('Đã thêm vào giỏ hàng!');
+  }
 
-    renderProducts(sanPhamNoiBat);
-
-    const oSapXepTheoGia = document.getElementById("sapXepTheoGia");
-
-    oSapXepTheoGia.addEventListener("change", () => {
-      const giaTriChon = oSapXepTheoGia.value;
-      let danhSachSapXep = [...sanPhamNoiBat];
-
-      if (giaTriChon === "asc") {
-        danhSachSapXep.sort((a, b) => a.price - b.price);
-      } else if (giaTriChon === "desc") {
-        danhSachSapXep.sort((a, b) => b.price - a.price);
-      }
-
-      renderProducts(danhSachSapXep);
+  function renderProducts(products) {
+    productList.innerHTML = "";
+    if (products.length === 0) {
+      productList.innerHTML = `<div style="padding:36px 0;color:#888;text-align:center">Không có sản phẩm.</div>`;
+      return;
+    }
+    products.forEach(p => {
+      const el = document.createElement("div");
+      el.className = "product-item";
+      el.innerHTML = `
+        <div class="product-image">
+          <img src="${p.image}" alt="${p.name}" />
+          <div class="btn-group">
+            <button class="add-cart-btn" data-id="${p.id}">Thêm giỏ hàng</button>
+            <a class="detail-btn" href="chitiet.html?id=${p.id}">Chi tiết</a>
+          </div>
+        </div>
+        <h5>${p.name}</h5>
+        <p>${p.price.toLocaleString()} ₫</p>
+        <i class="fa-regular fa-heart heart-icon"></i>
+      `;
+      productList.appendChild(el);
+      // Thêm sự kiện cho nút Thêm vào giỏ hàng
+      el.querySelector('.add-cart-btn').addEventListener('click', function() {
+        addToCart(p.id);
+      });
     });
-  </script>
+  }
+
+  // Hàm lọc và sắp xếp sản phẩm
+  function filterProducts() {
+    let filtered = sanPhamNoiBat.filter(sp =>
+      sp.category === "Polo" ||
+      sp.category === "Sơ Mi" ||
+      sp.category === "T-Shirt" ||
+      sp.category === "Hoodie"
+    );
+    if (selectedCategory !== "all") {
+      filtered = filtered.filter(sp => sp.category === selectedCategory);
+    }
+    if (currentKeyword) {
+      filtered = filtered.filter(sp => sp.name.toLowerCase().includes(currentKeyword.toLowerCase()));
+    }
+    if (currentSort === "asc") {
+      filtered = filtered.slice().sort((a, b) => a.price - b.price);
+    } else if (currentSort === "desc") {
+      filtered = filtered.slice().sort((a, b) => b.price - a.price);
+    }
+    renderProducts(filtered);
+  }
+
+  // Sidebar: lọc loại
+  document.querySelectorAll('#categoryList li').forEach(li => {
+    li.addEventListener('click', () => {
+      document.querySelectorAll('#categoryList li').forEach(item => item.classList.remove("active"));
+      li.classList.add("active");
+      selectedCategory = li.getAttribute('data-category');
+      filterProducts();
+    });
+  });
+
+  // Tìm kiếm
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      currentKeyword = e.target.value.trim();
+      filterProducts();
+    });
+  }
+
+  // Sắp xếp
+  const oSapXepTheoGia = document.getElementById("sapXepTheoGia");
+  oSapXepTheoGia.addEventListener("change", () => {
+    currentSort = oSapXepTheoGia.value;
+    filterProducts();
+  });
+
+  // Khi vào trang, mặc định hiện tất cả áo
+  filterProducts();
+</script>
 </body>
 </html>
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Cột 1 -->
+    <div class="footer-column">
+      <img src="img/logo.svg" alt="OWEN Logo" class="footer-logo">
+      <p><strong>CÔNG TY CỔ PHẦN THỜI TRANG KOWIL VIỆT NAM</strong></p>
+      <p>Hotline: <strong>1900 8079</strong></p>
+      <p>8:30 - 19:00 tất cả các ngày trong tuần.</p><br>
+      <p><strong>VP Phía Bắc:</strong> Tầng 17 tòa nhà Viwaseen, 48 Phố Tố Hữu, Trung Văn, Nam Từ Liêm, Hà Nội.</p>
+      <p><strong>VP Phía Nam:</strong> 186A Nam Kỳ Khởi Nghĩa, Phường Võ Thị Sáu, Quận 3, TP.HCM</p>
+    </div>
+    <!-- Cột 2 -->
+    <div class="footer-column">
+      <h3>GIỚI THIỆU OWEN</h3>
+      <ul>
+        <li><a href="#">Giới thiệu</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Hệ thống cửa hàng</a></li>
+        <li><a href="#">Liên hệ với Owen</a></li>
+        <li><a href="#">Chính sách bảo mật</a></li>
+      </ul>
+    </div>
+    <!-- Cột 3 -->
+    <div class="footer-column">
+      <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+      <ul>
+        <li><a href="#">Hỏi đáp</a></li>
+        <li><a href="#">Chính sách vận chuyển</a></li>
+        <li><a href="#">Hướng dẫn chọn kích cỡ</a></li>
+        <li><a href="#">Hướng dẫn thanh toán</a></li>
+        <li><a href="#">Quy định đổi hàng</a></li>
+        <li><a href="#">Hướng dẫn mua hàng</a></li>
+      </ul>
+    </div>
+    <!-- Cột 4 -->
+    <div class="footer-column">
+      <h3>KẾT NỐI</h3>
+      <div class="social-icons">
+        <a href="#"><img src="img/logofb.png" alt="Facebook"></a>
+        <a href="#"><img src="img/logoist.jpg" alt="Instagram"></a>
+        <a href="#"><img src="img/logoytb.png" alt="YouTube"></a>
+      </div>
+    </div>
+  </div>
+</footer>

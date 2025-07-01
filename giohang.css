@@ -175,43 +175,35 @@ img {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
-  .cart-table thead {
-    display: none;
+  .navbar {
+    flex-wrap: wrap;
+    padding: 10px 20px;
   }
 
-  .cart-table, .cart-table tbody, .cart-table tr, .cart-table td {
-    display: block;
+  .navbar-logo img {
+    height: 32px;
+  }
+
+  .navbar-menu {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+    align-items: flex-start;
+  }
+
+  .navbar-search {
+    margin-top: 10px;
     width: 100%;
   }
 
-  .cart-table tr {
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-  }
-
-  .cart-table td {
-    text-align: left;
-    padding-left: 50%;
-    position: relative;
-  }
-
-  .cart-table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 10px;
-    top: 12px;
-    font-weight: bold;
-    white-space: nowrap;
-  }
-
-  .cart-summary {
-    text-align: center;
-  }
-
-  .checkout-btn {
+  .navbar-search input {
     width: 100%;
-    text-align: center;
+  }
+
+  .navbar-icons {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: flex-start;
   }
 }

@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="giohang.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trang Thanh Toán</title>
+  <link rel="stylesheet" href="thanhtoan.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>  
-       <header class="navbar">
+<body>
+   <header class="navbar">
         <div class="navbar-logo">
-              <a href="index.html"><img src="img/logo.svg" alt=""></a>
+            <a href="index.html"><img src="img/logo.svg" alt=""></a>
         </div>
         <div class="navbar-menu">
             <a href="index.html">TRANG CHỦ</a>
             <a href="ao.html">ÁO</a>
-            <a href="#">LIÊN HỆ</a>
+            <a href="lienhe.html">LIÊN HỆ</a>
         </div>
         <div class="navbar-search">
         <input type="text" id="searchInput" placeholder="Bạn tìm gì..." />
@@ -29,33 +29,23 @@
             <a href="giohang.html"><i  class="fas fa-bag-shopping"></i></a>
   </div>
     </header>
-        <main class="cart-page">
-        <h1>Giỏ hàng của bạn</h1>
-        <div class="cart-wrapper">
-            <table class="cart-table">
-                <thead>
-                    <tr>
-                        <th>Ảnh</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Size</th>
-                        <th>Giá</th>
-                        <th>Số lượng</th>
-                        <th>Thành tiền</th>
-                        <th>Xóa</th>
-                    </tr>
-                </thead>
-                <tbody id="cart-body">
-                    <!-- Dữ liệu sẽ được đổ từ JS -->
-                </tbody>
-            </table>
-            <div class="cart-summary">
-                <p>Tổng cộng: <span id="total-price">0₫</span></p>
-                <a href="thanhtoan.html" class="checkout-btn">Tiến hành thanh toán</a>
-            </div>
-        </div>
-    </main>
+  <div class="container">
+    <h2>Thông tin giao hàng</h2>
+    <form id="checkout-form">
+      <input type="text" id="fullname" placeholder="Họ và tên" required>
+      <input type="text" id="address" placeholder="Địa chỉ" required>
+      <input type="tel" id="phone" placeholder="Số điện thoại" pattern="0[0-9]{9}" required>
+      <input type="email" id="email" placeholder="Email" required>
+    </form>
 
-    <script src="giohang.js"></script>
+    <h2>Tóm tắt đơn hàng</h2>
+    <div id="order-summary"></div>
+
+    <button id="confirm-btn">Xác nhận đơn hàng</button>
+    <p id="message" class="success-message"></p>
+  </div>
+
+  <script src="thanhtoan.js"></script>
 </body>
 </html>
 <footer class="footer">
@@ -107,6 +97,3 @@
     </div>
   </div>
 </footer>
-
-
-   

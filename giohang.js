@@ -4,24 +4,26 @@ function loadCart() {
   cartBody.innerHTML = '';
   let total = 0;
 
-  cart.forEach((item, index) => {
-    const quantity = item.qty || 1;
-    const itemTotal = item.price * quantity;
-    total += itemTotal;
+cart.forEach((item, index) => {
+  const quantity = item.quantity || 1;
+  const itemTotal = item.price * quantity;
+  total += itemTotal;
 
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td><img src="${item.image}" alt="${item.name}" /></td>
-      <td>${item.name}</td>
-      <td>${formatCurrency(item.price)}</td>
-      <td>
-        <input type="number" min="1" value="${quantity}" onchange="updateQuantity(${index}, this.value)" />
-      </td>
-      <td>${formatCurrency(itemTotal)}</td>
-      <td><button onclick="removeItem(${index})">X</button></td>
-    `;
-    cartBody.appendChild(row);
-  });
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td><img src="${item.image}" alt="${item.name}" /></td>
+    <td>${item.name}</td>
+    <td>${item.size || ""}</td>
+    <td>${formatCurrency(item.price)}</td>
+    <td>
+      <input type="number" min="1" value="${quantity}" onchange="updateQuantity(${index}, this.value)" />
+    </td>
+    <td>${formatCurrency(itemTotal)}</td>
+    <td><button onclick="removeItem(${index})">X</button></td>
+  `;
+  cartBody.appendChild(row);
+});
+
 
   document.getElementById('total-price').textContent = formatCurrency(total);
 }
@@ -35,7 +37,7 @@ function updateQuantity(index, quantity) {
     return;
   }
 
-  cart[index].qty = qty; // sửa lại đúng thuộc tính
+  cart[index].quantity = qty;
   localStorage.setItem('cart', JSON.stringify(cart));
   loadCart();
 }

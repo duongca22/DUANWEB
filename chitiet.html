@@ -6,44 +6,106 @@
   <title>Chi tiết sản phẩm</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="chitiet.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- HEADER -->
+  <header class="navbar">
+    <div class="navbar-logo">
+      <a href="index.html"><img src="img/logo.svg" alt=""></a>
+    </div>
+    <div class="navbar-menu">
+      <a href="index.html">TRANG CHỦ</a>
+      <a href="ao.html">ÁO</a>
+      <a href="lienhe.html">LIÊN HỆ</a>
+    </div>
+    <div class="navbar-search">
+      <input type="text" id="searchInput" placeholder="Bạn tìm gì..." />
+      <i class="icon-search">🔍</i>
+    </div>
+    <div class="navbar-icons">
+      <i class="far fa-heart"></i>
+      <i class="far fa-user"></i>
+      <a href="giohang.html"><i class="fas fa-bag-shopping"></i></a>
+    </div>
+  </header>
 
-  <div class="breadcrumb">
-    <a href="index.html">Trang chủ</a> | <a href="ao.html">Áo</a> | <strong id="product-name-small">Chi tiết</strong>
-  </div>
-
-  <div class="container">
-    <!-- Cột trái: Hình ảnh -->
-    <div class="left-column">
-      <img id="main-img" class="main-img" src="" alt="Sản phẩm">
-      <div class="thumbnail-list" id="thumbnails"></div>
+  <div class="wrapper">
+    <div class="breadcrumb">
+      <a href="index.html">Trang chủ</a> | <a href="ao.html">Áo</a> | <strong id="product-name-small">Chi tiết</strong>
     </div>
 
-    <!-- Cột phải: Thông tin -->
-    <div class="right-column">
-      <div class="product-title" id="product-name"></div>
-      <div class="product-code" id="product-code"></div>
-      <div class="product-price" id="product-price"></div>
-
-      <div><strong>Màu sắc:</strong>
-        <span id="color-box" class="color-box"></span>
+    <div class="container">
+      <!-- Cột trái -->
+      <div class="left-column">
+        <img id="main-img" class="main-img" src="" alt="Sản phẩm">
+        <div class="thumbnail-list" id="thumbnails"></div>
       </div>
 
-      <div style="margin-top: 15px;"><strong>Kích cỡ:</strong></div>
-      <div class="size-options" id="size-options" style="margin-bottom: 20px;"></div>
-
-      <label>Số lượng:
-        <input type="number" id="product-qty" value="1" min="1" style="width: 60px; margin-left: 10px;">
-      </label>
-
-      <br>
-      <button class="btn-add" onclick="addToCart()">THÊM VÀO GIỎ HÀNG</button>
-
-      <div class="description" id="product-description"></div>
+      <!-- Cột phải -->
+      <div class="right-column">
+        <div class="product-title" id="product-name"></div>
+        <div class="product-code" id="product-code"></div>
+        <div class="product-price" id="product-price"></div>
+        <div style="margin-top: 15px;"><strong>Kích cỡ:</strong></div>
+        <div class="size-options" id="size-options" style="margin-bottom: 20px;"></div>
+        <label>Số lượng:
+          <input type="number" id="product-qty" value="1" min="1" style="width: 60px; margin-left: 10px;">
+        </label>
+        <br>
+        <button class="btn-add" onclick="addToCart()">THÊM VÀO GIỎ HÀNG</button>
+        <div class="description" id="product-description"></div>
+      </div>
+    </div>
+    <div class="related-section">
+      <h3>Sản phẩm liên quan</h3>
+      <div class="related-list" id="relatedList"></div>
     </div>
   </div>
 
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <img src="img/logo.svg" alt="OWEN Logo" class="footer-logo">
+        <p><strong>CÔNG TY CỔ PHẦN THỜI TRANG KOWIL VIỆT NAM</strong></p>
+        <p>Hotline: <strong>1900 8079</strong></p>
+        <p>8:30 - 19:00 tất cả các ngày trong tuần.</p><br>
+        <p><strong>VP Phía Bắc:</strong> Tầng 17 tòa nhà Viwaseen, 48 Phố Tố Hữu, Hà Nội.</p>
+        <p><strong>VP Phía Nam:</strong> 186A Nam Kỳ Khởi Nghĩa, Q3, TP.HCM</p>
+      </div>
+      <div class="footer-column">
+        <h3>GIỚI THIỆU OWEN</h3>
+        <ul>
+          <li><a href="#">Giới thiệu</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Hệ thống cửa hàng</a></li>
+          <li><a href="#">Liên hệ</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+        <ul>
+          <li><a href="#">Hỏi đáp</a></li>
+          <li><a href="#">Chính sách vận chuyển</a></li>
+          <li><a href="#">Hướng dẫn chọn kích cỡ</a></li>
+          <li><a href="#">Hướng dẫn thanh toán</a></li>
+          <li><a href="#">Đổi hàng</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>KẾT NỐI</h3>
+        <div class="social-icons">
+          <a href="#"><img src="img/logofb.png" alt="Facebook"></a>
+          <a href="#"><img src="img/logoist.jpg" alt="Instagram"></a>
+          <a href="#"><img src="img/logoytb.png" alt="YouTube"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT: NÊN ĐẶT product.js TRƯỚC script bên dưới -->
   <script src="product.js"></script>
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -53,14 +115,15 @@
     if (!product) {
       document.body.innerHTML = "<p>Không tìm thấy sản phẩm</p>";
     } else {
-      // Hiển thị dữ liệu
       document.getElementById("main-img").src = product.images[0];
       document.getElementById("product-name").textContent = product.name;
       document.getElementById("product-name-small").textContent = product.name;
       document.getElementById("product-code").textContent = "Mã SP: " + product.code;
       document.getElementById("product-price").textContent = product.price.toLocaleString() + " ₫";
       document.getElementById("product-description").textContent = product.description;
-      document.getElementById("color-box").style.backgroundColor = product.color;
+      // Chỉ set màu nếu có color-box
+      const colorBox = document.getElementById("color-box");
+      if (colorBox) colorBox.style.backgroundColor = product.color;
 
       const sizeOptions = document.getElementById("size-options");
       product.sizes.forEach(size => {
@@ -74,7 +137,6 @@
         sizeOptions.appendChild(btn);
       });
 
-      // Thumbnail ảnh phụ
       const thumbList = document.getElementById("thumbnails");
       product.images.forEach(img => {
         const thumb = document.createElement("img");
@@ -88,27 +150,42 @@
 
     let selectedSize = null;
 
-    function addToCart() {
-      const qty = parseInt(document.getElementById("product-qty").value);
-      if (!selectedSize) return alert("Vui lòng chọn kích cỡ!");
+  function addToCart() {
+  const qty = parseInt(document.getElementById("product-qty").value);
+  if (!selectedSize) return alert("Vui lòng chọn kích cỡ!");
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const existing = cart.find(i => i.id === product.id && i.size === selectedSize);
+  if (existing) {
+    existing.quantity += qty; // Chỉ dùng quantity!
+  } else {
+    cart.push({ ...product, size: selectedSize, quantity: qty }); // Chỉ dùng quantity!
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Đã thêm vào giỏ hàng!");
+}
 
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-      const existing = cart.find(i => i.id === product.id && i.size === selectedSize);
-      if (existing) {
-        existing.qty += qty;
-      } else {
-        cart.push({
-          ...product,
-          size: selectedSize,
-          qty
-        });
-      }
-
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert("Đã thêm vào giỏ hàng!");
+    // SẢN PHẨM LIÊN QUAN
+    function renderRelatedProducts() {
+      const related = sanPhamNoiBat
+        .filter(p => p.category === product.category && p.id !== product.id)
+        .slice(0, 4);
+      const relatedList = document.getElementById("relatedList");
+      relatedList.innerHTML = "";
+      related.forEach(sp => {
+        const el = document.createElement("div");
+        el.className = "related-item";
+        el.innerHTML = `
+          <a href="chitiet.html?id=${sp.id}">
+            <img src="${sp.image}" alt="${sp.name}">
+            <div class="name">${sp.name}</div>
+            <div class="price">${sp.price.toLocaleString()} ₫</div>
+          </a>
+        `;
+        relatedList.appendChild(el);
+      });
     }
+    renderRelatedProducts();
   </script>
-
 </body>
 </html>

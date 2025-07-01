@@ -33,17 +33,28 @@ function renderProducts(products) {
   const productList = document.getElementById("productList");
   productList.innerHTML = "";
 
+  // KIỂM TRA NẾU KHÔNG CÓ SẢN PHẨM
+  if (products.length === 0) {
+    productList.innerHTML = `
+      <div style="text-align:center;padding:40px 0;color:#888;font-size:1.2rem;">
+        Không tìm thấy sản phẩm phù hợp.
+      </div>
+    `;
+    return;
+  }
+
   products.forEach(product => {
     const productCard = document.createElement("div");
     productCard.className = "product-card";
-
     productCard.innerHTML = `
       <img src="${product.image}" alt="${product.name}" />
       <h3>${product.name}</h3>
-      <p class="price">${product.price.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'})}</p>
-      <button class="add-to-cart" data-id="${product.id}">Thêm vào giỏ hàng</button>
+      <p class="price">${product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+      <div class="button-group">
+        <button class="add-to-cart" data-id="${product.id}">Thêm giỏ hàng</button>
+        <a class="btn-detail" href="chitiet.html?id=${product.id}">Chi tiết</a>
+      </div>
     `;
-
     productList.appendChild(productCard);
   });
 
@@ -56,6 +67,7 @@ function renderProducts(products) {
     });
   });
 }
+
 
 // Hàm thêm sản phẩm vào giỏ hàng
 function addToCart(productId) {
@@ -99,4 +111,6 @@ searchInput.addEventListener("input", (e) => {
 });
 
 // Khởi tạo trang
-renderProducts(sanPhamNoiBat);
+renderProducts(sanPhamNoiBat.slice(0, 4));
+
+

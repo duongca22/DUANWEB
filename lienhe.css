@@ -1,0 +1,122 @@
+
+    body {
+      background: #f3f7fa;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+    }
+    .trang-lien-he {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 18px #0001;
+      padding: 32px 18px;
+    }
+    .trang-lien-he h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 28px;
+      color: #1976d2;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .lienhe-noi-dung {
+      display: flex;
+      gap: 32px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .thong-tin-lien-he {
+      flex: 1 1 230px;
+      min-width: 200px;
+      max-width: 320px;
+      font-size: 1.08rem;
+      padding: 8px 0 0 8px;
+    }
+    .thong-tin-lien-he h3 {
+      font-size: 1.11rem;
+      margin-bottom: 12px;
+      color: #2c2c2c;
+      font-weight: 700;
+    }
+    .thong-tin-lien-he p {
+      margin: 10px 0;
+      color: #222;
+    }
+    .thong-tin-lien-he a {
+      color: #1976d2;
+      text-decoration: none;
+    }
+    .thong-tin-lien-he a:hover {
+      text-decoration: underline;
+    }
+
+    /* FORM */
+    .form-lien-he {
+      flex: 1 1 340px;
+      min-width: 220px;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #f7fbfe;
+      border-radius: 8px;
+      padding: 20px 14px;
+      box-shadow: 0 2px 10px #1976d210;
+    }
+    .form-lien-he h3 {
+      margin-bottom: 4px;
+      color: #2d607e;
+      font-weight: 700;
+      font-size: 1.08rem;
+    }
+    .form-lien-he input,
+    .form-lien-he textarea {
+      border: 1px solid #b7d4ee;
+      border-radius: 4px;
+      padding: 10px 12px;
+      font-size: 1rem;
+      background: #fff;
+      color: #222;
+      outline: none;
+      transition: border 0.19s;
+    }
+    .form-lien-he input:focus,
+    .form-lien-he textarea:focus {
+      border: 1.5px solid #1976d2;
+    }
+    .form-lien-he button {
+      background: linear-gradient(90deg, #1976d2 70%, #15a362 100%);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 11px 0;
+      font-size: 1.05rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.17s, box-shadow 0.12s;
+      margin-top: 8px;
+      box-shadow: 0 2px 8px #1976d211;
+    }
+    .form-lien-he button:hover {
+      background: linear-gradient(90deg, #15a362 30%, #1976d2 100%);
+    }
+    .bao-loi {
+      color: #27ae60;
+      font-size: 1rem;
+      margin-top: 7px;
+      text-align: left;
+      min-height: 24px;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .lienhe-noi-dung { flex-direction: column; gap: 16px; }
+      .thong-tin-lien-he, .form-lien-he { max-width: 100%; }
+      .trang-lien-he { padding: 22px 4px; }
+    }
+    @media (max-width: 500px) {
+      .trang-lien-he h2 { font-size: 1.18rem; }
+      .trang-lien-he { padding: 7px 1px;}
+      .form-lien-he { padding: 11px 3px;}
+    }

@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="giohang.css">
+  <meta charset="UTF-8">
+  <title>Liên hệ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="lienhe.css">
     <link rel="stylesheet" href="style.css">
+  
 </head>
-<body>  
-       <header class="navbar">
+<body>
+      <header class="navbar">
         <div class="navbar-logo">
-              <a href="index.html"><img src="img/logo.svg" alt=""></a>
+               <a href="index.html"><img src="img/logo.svg" alt=""></a>
         </div>
         <div class="navbar-menu">
-            <a href="index.html">TRANG CHỦ</a>
+            <a href="index.html ">TRANG CHỦ</a>
             <a href="ao.html">ÁO</a>
             <a href="#">LIÊN HỆ</a>
         </div>
@@ -29,33 +30,46 @@
             <a href="giohang.html"><i  class="fas fa-bag-shopping"></i></a>
   </div>
     </header>
-        <main class="cart-page">
-        <h1>Giỏ hàng của bạn</h1>
-        <div class="cart-wrapper">
-            <table class="cart-table">
-                <thead>
-                    <tr>
-                        <th>Ảnh</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Size</th>
-                        <th>Giá</th>
-                        <th>Số lượng</th>
-                        <th>Thành tiền</th>
-                        <th>Xóa</th>
-                    </tr>
-                </thead>
-                <tbody id="cart-body">
-                    <!-- Dữ liệu sẽ được đổ từ JS -->
-                </tbody>
-            </table>
-            <div class="cart-summary">
-                <p>Tổng cộng: <span id="total-price">0₫</span></p>
-                <a href="thanhtoan.html" class="checkout-btn">Tiến hành thanh toán</a>
-            </div>
-        </div>
-    </main>
-
-    <script src="giohang.js"></script>
+  <section class="trang-lien-he">
+    <h2>Liên hệ với chúng tôi</h2>
+    <div class="lienhe-noi-dung">
+      <div class="thong-tin-lien-he">
+        <h3>Thông tin liên hệ</h3>
+        <p><strong>Email:</strong> <a href="#">tranquangduong4@gmail.com</a></p>
+        <p><strong>Điện thoại:</strong> <a href="tel:0909009009">0383570392</a></p>
+        <p><strong>Địa chỉ:</strong> 123 Đường Ecommerce, Quận 1, TP.HCM</p>
+      </div>
+      <form id="formLienHe" class="form-lien-he" autocomplete="off">
+        <h3>Gửi thắc mắc cho chúng tôi</h3>
+        <input type="text" id="ten" placeholder="Họ tên" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <textarea id="noidung" placeholder="Nội dung" rows="4" required></textarea>
+        <button type="submit">Gửi liên hệ</button>
+        <div class="bao-loi" id="baoLoi"></div>
+      </form>
+    </div>
+  </section>
+  <script>
+    document.getElementById("formLienHe").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const ten = document.getElementById("ten").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const noidung = document.getElementById("noidung").value.trim();
+      const baoLoi = document.getElementById("baoLoi");
+      if (!ten || !email || !noidung) {
+        baoLoi.textContent = "Vui lòng điền đầy đủ thông tin!";
+        baoLoi.style.color = "#e53935";
+        return;
+      }
+      const lienhe = { ten, email, noidung, ngay: new Date().toLocaleString() };
+      let dsLienHe = JSON.parse(localStorage.getItem("dsLienHe")) || [];
+      dsLienHe.push(lienhe);
+      localStorage.setItem("dsLienHe", JSON.stringify(dsLienHe));
+      baoLoi.textContent = "✅ Gửi liên hệ thành công!";
+      baoLoi.style.color = "#27ae60";
+      document.getElementById("formLienHe").reset();
+    });
+  </script>
 </body>
 </html>
 <footer class="footer">
@@ -107,6 +121,3 @@
     </div>
   </div>
 </footer>
-
-
-   
