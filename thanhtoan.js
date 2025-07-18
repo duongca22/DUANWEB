@@ -107,8 +107,16 @@ infoHTML += `
     document.getElementById("checkout-form").style.display = "none"; 
     confirmBtn.style.display = "none";
     message.textContent = "Cảm ơn bạn đã đặt hàng!";
-
+    const buttonBox = document.createElement("div");
+    buttonBox.className = "order-action-buttons";
+    buttonBox.innerHTML = `
+      <button onclick="window.location.href='ao.html'">🛍️ Tiếp tục mua sắm</button>
+      <button onclick="window.location.href='index.html'">🏠 Về trang chủ</button>
+    `;
+    orderSummary.appendChild(buttonBox);
 
 
   });
 });
+
+

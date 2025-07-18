@@ -27,7 +27,6 @@ const sanPhamNoiBat = [
     description: "Áo sơ mi form body, chất liệu mềm mại, thoáng khí, phù hợp mặc đi làm, đi chơi.",
     image: "img/sp3.0.webp",
     images: [
-      "img/sp3.1.webp",
       "img/sp3.2.webp",
       "img/sp3.3.webp",
       "img/sp3.0.webp"
@@ -61,9 +60,9 @@ const sanPhamNoiBat = [
     description: "Áo khoác hoodie chất nỉ dày dặn, mũ rộng, giữ ấm tốt, hợp đi học, đi chơi.",
     image: "img/sp5.0.webp",
     images: [
-      "img/sp5.1.webp",
-      "img/sp5.2.webp",
-      "img/sp5.0.webp"
+      "img/sp5.5.1.webp",
+      "img/sp5.5.2.webp",
+      "img/sp5.5.0.webp",
     ]
   },
   {
@@ -89,7 +88,7 @@ const sanPhamNoiBat = [
     color: "#357345",
     sizes: ["S", "M", "L", "XL", "XXL"],
     description: "Áo polo dáng thể thao, cổ bẻ trẻ trung, chất vải co giãn 4 chiều.",
-    image: "img/sp7.0.webp",
+    image: "img/sp7.1.webp",
     images: [
       "img/sp7.1.webp",
       "img/sp7.2.webp",
@@ -121,11 +120,11 @@ const sanPhamNoiBat = [
     color: "#e3e3e3",
     sizes: ["S", "M", "L", "XL", "XXL"],
     description: "Áo sơ mi trắng đơn giản, dễ phối đồ, thích hợp đi làm, đi học.",
-    image: "img/sp9.0.webp",
+    image: "img/sp8.1.webp",
     images: [
-      "img/sp9.1.webp",
-      "img/sp9.2.webp",
-      "img/sp9.0.webp"
+      "img/sp8.3.webp",
+      "img/sp8.2.webp",
+      "img/sp8.4.webp"
     ]
   }
 ];
