@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trang Áo</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="ao.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <header class="navbar">
-        <div class="navbar-logo">
-               <a href="index.html"><img src="img/logo.svg" alt=""></a>
-        </div>
-        <div class="navbar-menu">
-            <a href="index.html">TRANG CHỦ</a>
-            <a href="ao.html">ÁO</a>
-            <a href="lienhe.html">LIÊN HỆ</a>
-        </div>
-        <div class="navbar-search">
-          <input type="text" id="searchInput" placeholder="Bạn tìm gì..." />
-          <i class="icon-search">🔍</i>
-        </div>
-        <div class="navbar-icons">
-            <a href="giohang.html"><i  class="fas fa-bag-shopping"></i></a>
-        </div>
-    </header>
+  <header class="navbar">
+    <div class="navbar-logo">
+      <a href="index.html"><img src="img/logo.svg" alt=""></a>
+    </div>
+    <div class="navbar-menu">
+      <a href="index.html">TRANG CHỦ</a>
+      <a href="ao.html">ÁO</a>
+      <a href="lienhe.html">LIÊN HỆ</a>
+    </div>
+    <div class="navbar-search">
+      <input type="text" id="searchInput" placeholder="Bạn tìm gì..." />
+      <i class="icon-search">🔍</i>
+    </div>
+    <div class="navbar-icons">
+      <a href="giohang.html"><i class="fas fa-bag-shopping"></i></a>
+    </div>
+  </header>
 
   <!-- Breadcrumb -->
   <div class="breadcrumb">
@@ -39,7 +41,8 @@
     <img src="img/ao_so_mi_021024.jpg" alt="Áo sơ mi OWEN" />
     <div class="banner-text">
       <h1>Áo OWEN Nam</h1>
-      <p>Áo Owen nam đẹp, kiểu dáng thanh lịch cùng chất liệu cao cấp sẽ giúp bạn xây dựng phong cách lịch lãm, thu hút mọi ánh nhìn.</p>
+      <p>Áo Owen nam đẹp, kiểu dáng thanh lịch cùng chất liệu cao cấp sẽ giúp bạn xây dựng phong cách lịch lãm, thu hút
+        mọi ánh nhìn.</p>
     </div>
   </div>
 
@@ -70,45 +73,66 @@
       </section>
     </div>
   </div>
-
   <script src="product.js"></script>
-  <script>  
-  // Biến lưu loại áo & từ khóa hiện tại
-  let selectedCategory = "all";
-  let currentKeyword = "";
-  let currentSort = ""; // asc, desc, hoặc ""
+  <script>
+    window.onload = function () {
+      let selectedCategory = "all";
+      let currentKeyword = "";
+      let currentSort = "";
+      const productList = document.getElementById("productList");
+      let selectedProductId = null;
 
-  const productList = document.getElementById("productList");
+      function showBox(sizes) {
+        document.getElementById("sizes").innerHTML = sizes.map(size => `
+      <label><input type="radio" name="s" value="${size}"> ${size}</label><br>
+    `).join("");
+        document.getElementById("sizeBox").style.display = "block";
+      }
 
-  // Hàm thêm sản phẩm vào giỏ hàng
-  function addToCart(productId) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const product = sanPhamNoiBat.find(p => p.id === productId);
-    if (!product) {
-      console.error("Sản phẩm không tồn tại:", productId);
-      return;
-    }
-    let existingItem = cart.find(item => item.id === productId);
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      cart.push({ ...product, quantity: 1 });
-    }
-    localStorage.setItem("cart", JSON.stringify(cart));
-    console.log("Đã thêm vào giỏ hàng:", product);
-    alert('Đã thêm vào giỏ hàng!');
-  }
+      function hideBox() {
+        document.getElementById("sizeBox").style.display = "none";
+      }
 
-  function renderProducts(products) {
-    productList.innerHTML = "";
-    if (products.length === 0) {
-      productList.innerHTML = `<div style="padding:36px 0;color:#888;text-align:center">Không có sản phẩm.</div>`;
-      return;
-    }
-    products.forEach(p => {
-      const el = document.createElement("div");
-      el.className = "product-item";
-      el.innerHTML = `
+      document.getElementById("close").addEventListener("click", hideBox);
+
+      document.getElementById("ok").addEventListener("click", () => {
+        const selected = document.querySelector('input[name="s"]:checked');
+        if (!selected) {
+          alert("Vui lòng chọn size!");
+          return;
+        }
+        const size = selected.value;
+        addToCart(selectedProductId, size);
+        hideBox();
+      });
+
+      function addToCart(productId, size = null) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const product = sanPhamNoiBat.find(p => p.id === productId);
+        if (!product) {
+          console.error("Sản phẩm không tồn tại:", productId);
+          return;
+        }
+        let existingItem = cart.find(item => item.id === productId && item.size === size);
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ ...product, size, quantity: 1 });
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`Đã thêm vào giỏ hàng${size ? ` (Size ${size})` : ''}!`);
+      }
+
+      function renderProducts(products) {
+        productList.innerHTML = "";
+        if (products.length === 0) {
+          productList.innerHTML = `<div style="padding:36px 0;color:#888;text-align:center">Không có sản phẩm.</div>`;
+          return;
+        }
+        products.forEach(p => {
+          const el = document.createElement("div");
+          el.className = "product-item";
+          el.innerHTML = `
         <div class="product-image">
           <img src="${p.image}" alt="${p.name}" />
           <div class="btn-group">
@@ -120,66 +144,77 @@
         <p>${p.price.toLocaleString()} ₫</p>
         <i class="fa-regular fa-heart heart-icon"></i>
       `;
-      productList.appendChild(el);
-      // Thêm sự kiện cho nút Thêm vào giỏ hàng
-      el.querySelector('.add-cart-btn').addEventListener('click', function() {
-        addToCart(p.id);
+          productList.appendChild(el);
+          el.querySelector('.add-cart-btn').addEventListener('click', function () {
+            selectedProductId = p.id;
+            if (p.sizes && p.sizes.length > 0) {
+              showBox(p.sizes);
+            } else {
+              addToCart(p.id); // không có size thì thêm luôn
+            }
+          });
+        });
+      }
+
+      function filterProducts() {
+        let filtered = sanPhamNoiBat.filter(sp =>
+          sp.category === "Polo" ||
+          sp.category === "Sơ Mi" ||
+          sp.category === "T-Shirt" ||
+          sp.category === "Hoodie"
+        );
+        if (selectedCategory !== "all") {
+          filtered = filtered.filter(sp => sp.category === selectedCategory);
+        }
+        if (currentKeyword) {
+          filtered = filtered.filter(sp => sp.name.toLowerCase().includes(currentKeyword.toLowerCase()));
+        }
+        if (currentSort === "asc") {
+          filtered = filtered.slice().sort((a, b) => a.price - b.price);
+        } else if (currentSort === "desc") {
+          filtered = filtered.slice().sort((a, b) => b.price - a.price);
+        }
+        renderProducts(filtered);
+      }
+
+      document.querySelectorAll('#categoryList li').forEach(li => {
+        li.addEventListener('click', () => {
+          document.querySelectorAll('#categoryList li').forEach(item => item.classList.remove("active"));
+          li.classList.add("active");
+          selectedCategory = li.getAttribute('data-category');
+          filterProducts();
+        });
       });
-    });
-  }
 
-  // Hàm lọc và sắp xếp sản phẩm
-  function filterProducts() {
-    let filtered = sanPhamNoiBat.filter(sp =>
-      sp.category === "Polo" ||
-      sp.category === "Sơ Mi" ||
-      sp.category === "T-Shirt" ||
-      sp.category === "Hoodie"
-    );
-    if (selectedCategory !== "all") {
-      filtered = filtered.filter(sp => sp.category === selectedCategory);
-    }
-    if (currentKeyword) {
-      filtered = filtered.filter(sp => sp.name.toLowerCase().includes(currentKeyword.toLowerCase()));
-    }
-    if (currentSort === "asc") {
-      filtered = filtered.slice().sort((a, b) => a.price - b.price);
-    } else if (currentSort === "desc") {
-      filtered = filtered.slice().sort((a, b) => b.price - a.price);
-    }
-    renderProducts(filtered);
-  }
+      const searchInput = document.getElementById("searchInput");
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          currentKeyword = e.target.value.trim();
+          filterProducts();
+        });
+      }
 
-  // Sidebar: lọc loại
-  document.querySelectorAll('#categoryList li').forEach(li => {
-    li.addEventListener('click', () => {
-      document.querySelectorAll('#categoryList li').forEach(item => item.classList.remove("active"));
-      li.classList.add("active");
-      selectedCategory = li.getAttribute('data-category');
+      const oSapXepTheoGia = document.getElementById("sapXepTheoGia");
+      oSapXepTheoGia.addEventListener("change", () => {
+        currentSort = oSapXepTheoGia.value;
+        filterProducts();
+      });
+
       filterProducts();
-    });
-  });
+    };
+  </script>
 
-  // Tìm kiếm
-  const searchInput = document.getElementById("searchInput");
-  if (searchInput) {
-    searchInput.addEventListener("input", (e) => {
-      currentKeyword = e.target.value.trim();
-      filterProducts();
-    });
-  }
-
-  // Sắp xếp
-  const oSapXepTheoGia = document.getElementById("sapXepTheoGia");
-  oSapXepTheoGia.addEventListener("change", () => {
-    currentSort = oSapXepTheoGia.value;
-    filterProducts();
-  });
-
-  // Khi vào trang, mặc định hiện tất cả áo
-  filterProducts();
-</script>
+  <!-- size -->
+  <div id="sizeBox" class="box">
+    <div class="box-content">
+      <h3>Chọn size</h3>
+      <div id="sizes"></div>
+      <button id="ok">Xác nhận</button>
+      <button id="close">Hủy</button>
+    </div>
+  </div>
 </body>
+
 </html>
 <footer class="footer">
   <div class="footer-container">

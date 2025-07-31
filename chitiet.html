@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chi tiết sản phẩm</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="chitiet.css">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <!-- HEADER -->
   <header class="navbar">
@@ -103,7 +105,7 @@
     </div>
   </footer>
 
-  <!-- SCRIPT: NÊN ĐẶT product.js TRƯỚC script bên dưới -->
+
   <script src="product.js"></script>
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -119,7 +121,7 @@
       document.getElementById("product-code").textContent = "Mã SP: " + product.code;
       document.getElementById("product-price").textContent = product.price.toLocaleString() + " ₫";
       document.getElementById("product-description").textContent = product.description;
-      // Chỉ set màu nếu có color-box
+
       const colorBox = document.getElementById("color-box");
       if (colorBox) colorBox.style.backgroundColor = product.color;
 
@@ -148,19 +150,19 @@
 
     let selectedSize = null;
 
-  function addToCart() {
-  const qty = parseInt(document.getElementById("product-qty").value);
-  if (!selectedSize) return alert("Vui lòng chọn kích cỡ!");
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const existing = cart.find(i => i.id === product.id && i.size === selectedSize);
-  if (existing) {
-    existing.quantity += qty; // Chỉ dùng quantity!
-  } else {
-    cart.push({ ...product, size: selectedSize, quantity: qty }); // Chỉ dùng quantity!
-  }
-  localStorage.setItem("cart", JSON.stringify(cart));
-  alert("Đã thêm vào giỏ hàng!");
-}
+    function addToCart() {
+      const qty = parseInt(document.getElementById("product-qty").value);
+      if (!selectedSize) return alert("Vui lòng chọn kích cỡ!");
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existing = cart.find(i => i.id === product.id && i.size === selectedSize);
+      if (existing) {
+        existing.quantity += qty;
+      } else {
+        cart.push({ ...product, size: selectedSize, quantity: qty });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Đã thêm vào giỏ hàng!");
+    }
 
 
     // SẢN PHẨM LIÊN QUAN
@@ -186,4 +188,5 @@
     renderRelatedProducts();
   </script>
 </body>
+
 </html>

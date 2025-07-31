@@ -1,107 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>  
-    <header class="navbar">
-        <div class="navbar-logo">
-              <a href="index.html"><img src="img/logo.svg" alt=""></a>
-        </div>
-        <div class="navbar-menu">
-            <a href="index.html">TRANG CHỦ</a>
-            <a href="ao.html">ÁO</a>
-            <a href="lienhe.html">LIÊN HỆ</a>
-        </div>
-        <div class="navbar-search">
-        <input type="text" id="searchInput" placeholder="Bạn tìm gì..." />
-        <i class="icon-search">🔍</i>
-      </div>
 
-        <div class="navbar-icons">
-            <a href="giohang.html"><i  class="fa fa-cart-plus"></i></a>
-  </div>
-    </header>
-    <!-- Slideshow -->
-      <div class="slideshow-container">
-  <div class="slide active">
-       <img src="img/sile1.webp" alt="Ảnh 1">
-  </div>
-  <div class="slide">
+<body>
+  <header class="navbar">
+    <div class="navbar-logo">
+      <a href="index.html"><img src="img/logo.svg" alt=""></a>
+    </div>
+    <div class="navbar-menu">
+      <a href="index.html">TRANG CHỦ</a>
+      <a href="ao.html">ÁO</a>
+      <a href="lienhe.html">LIÊN HỆ</a>
+    </div>
+    <div class="navbar-search">
+      <input type="text" id="searchInput" placeholder="Bạn tìm gì..." />
+      <i class="icon-search">🔍</i>
+    </div>
+
+    <div class="navbar-icons">
+      <a href="giohang.html"><i class="fa fa-cart-plus"></i></a>
+    </div>
+  </header>
+  <!-- Slideshow -->
+  <div class="slideshow-container">
+    <div class="slide active">
+      <img src="img/sile1.webp" alt="Ảnh 1">
+    </div>
+    <div class="slide">
       <img src="img/sile2.webp" alt="Ảnh 2">
-  </div>
-  <div class="slide">
+    </div>
+    <div class="slide">
       <img src="img/sile3.webp" alt="Ảnh 3">
-  </div>
+    </div>
 
-  <!--  Nút điều khiển -->
-  <button class="prev">&#10094;</button>
-  <button class="next">&#10095;</button>
-</div>
-<!--Sản phẩm nỗi bật  -->
-    <section class="featured-products">
-        <center><h2>Sản phẩm nổi bật</h2></center>
+    <!--  Nút điều khiển -->
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </div>
+  <!--Sản phẩm nỗi bật  -->
+  <section class="featured-products">
+    <center>
+      <h2>Sản phẩm nổi bật</h2>
+    </center>
     <div id="productList" class="product-container">
-    
+
     </div>
   </section>
-    
-    
-<script src="product.js"></script>
-<script src="index.js"></script>
-<footer class="footer">
-  <div class="footer-container">
-    <!-- Cột 1 -->
-    <div class="footer-column">
-      <img src="img/logo.svg" alt="OWEN Logo" class="footer-logo">
-      <p><strong>CÔNG TY CỔ PHẦN THỜI TRANG KOWIL VIỆT NAM</strong></p>
-      <p>Hotline: <strong>1900 8079</strong></p>
-      <p>8:30 - 19:00 tất cả các ngày trong tuần.</p><br>
-      <p><strong>VP Phía Bắc:</strong> Tầng 17 tòa nhà Viwaseen, 48 Phố Tố Hữu, Trung Văn, Nam Từ Liêm, Hà Nội.</p>
-      <p><strong>VP Phía Nam:</strong> 186A Nam Kỳ Khởi Nghĩa, Phường Võ Thị Sáu, Quận 3, TP.HCM</p>
-    </div>
 
-    <!-- Cột 2 -->
-    <div class="footer-column">
-      <h3>GIỚI THIỆU OWEN</h3>
-      <ul>
-        <li><a href="#">Giới thiệu</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Hệ thống cửa hàng</a></li>
-        <li><a href="#">Liên hệ với Owen</a></li>
-        <li><a href="#">Chính sách bảo mật</a></li>
-      </ul>
-    </div>
 
-    <!-- Cột 3 -->
-    <div class="footer-column">
-      <h3>HỖ TRỢ KHÁCH HÀNG</h3>
-      <ul>
-        <li><a href="#">Hỏi đáp</a></li>
-        <li><a href="#">Chính sách vận chuyển</a></li>
-        <li><a href="#">Hướng dẫn chọn kích cỡ</a></li>
-        <li><a href="#">Hướng dẫn thanh toán</a></li>
-        <li><a href="#">Quy định đổi hàng</a></li>
-        <li><a href="#">Hướng dẫn mua hàng</a></li>
-      </ul>
-    </div>
-
-    <!-- Cột 4 -->
-    <div class="footer-column">
-      <h3>KẾT NỐI</h3>
-      <div class="social-icons">
-        <a href="#"><img src="img/logofb.png" alt="Facebook"></a>
-        <a href="#"><img src="img/logoist.jpg" alt="Instagram"></a>
-        <a href="#"><img src="img/logoytb.png" alt="YouTube"></a>
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Cột 1 -->
+      <div class="footer-column">
+        <img src="img/logo.svg" alt="OWEN Logo" class="footer-logo">
+        <p><strong>CÔNG TY CỔ PHẦN THỜI TRANG KOWIL VIỆT NAM</strong></p>
+        <p>Hotline: <strong>1900 8079</strong></p>
+        <p>8:30 - 19:00 tất cả các ngày trong tuần.</p><br>
+        <p><strong>VP Phía Bắc:</strong> Tầng 17 tòa nhà Viwaseen, 48 Phố Tố Hữu, Trung Văn, Nam Từ Liêm, Hà Nội.</p>
+        <p><strong>VP Phía Nam:</strong> 186A Nam Kỳ Khởi Nghĩa, Phường Võ Thị Sáu, Quận 3, TP.HCM</p>
       </div>
-    
+
+      <!-- Cột 2 -->
+      <div class="footer-column">
+        <h3>GIỚI THIỆU OWEN</h3>
+        <ul>
+          <li><a href="#">Giới thiệu</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Hệ thống cửa hàng</a></li>
+          <li><a href="#">Liên hệ với Owen</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+        </ul>
+      </div>
+
+      <!-- Cột 3 -->
+      <div class="footer-column">
+        <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+        <ul>
+          <li><a href="#">Hỏi đáp</a></li>
+          <li><a href="#">Chính sách vận chuyển</a></li>
+          <li><a href="#">Hướng dẫn chọn kích cỡ</a></li>
+          <li><a href="#">Hướng dẫn thanh toán</a></li>
+          <li><a href="#">Quy định đổi hàng</a></li>
+          <li><a href="#">Hướng dẫn mua hàng</a></li>
+        </ul>
+      </div>
+
+      <!-- Cột 4 -->
+      <div class="footer-column">
+        <h3>KẾT NỐI</h3>
+        <div class="social-icons">
+          <a href="#"><img src="img/logofb.png" alt="Facebook"></a>
+          <a href="#"><img src="img/logoist.jpg" alt="Instagram"></a>
+          <a href="#"><img src="img/logoytb.png" alt="YouTube"></a>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+  <!-- size khi thêm giỏ hàng -->
+  <div id="sizeBox" class="box">
+    <div class="box-content">
+      <h3>Chọn size</h3>
+      <div id="sizes"></div>
+      <button id="ok">Xác nhận</button>
+      <button id="close">Hủy</button>
     </div>
   </div>
-</footer>
 
+  <script src="product.js"></script>
+  <script src="index.js"></script>
 </body>
+
 </html>

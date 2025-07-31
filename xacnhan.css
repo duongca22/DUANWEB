@@ -1,0 +1,43 @@
+.box {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: sans-serif;
+}
+
+h2 {
+    color: green;
+    text-align: center;
+}
+
+.info,
+.order {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th,
+table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+.btns {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btns button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}

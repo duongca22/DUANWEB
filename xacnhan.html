@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<link rel="stylesheet" href="xacnhan.css">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Xác nhận đơn</title>
+
+</head>
+
+<body>
+
+    <div class="box" id="wrap">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const data = JSON.parse(localStorage.getItem("latestOrder"));
+            const box = document.getElementById("wrap");
+
+            if (!data) {
+                box.innerHTML = "<p>Không có đơn hàng.</p>";
+                return;
+            }
+
+            let html = `
+        <h2>✅ Đơn hàng đã xác nhận</h2>
+
+        <div class="info">
+          <h3>Khách hàng</h3>
+          <p><b>Họ tên:</b> ${data.fullname}</p>
+          <p><b>Địa chỉ:</b> ${data.address}</p>
+          <p><b>SĐT:</b> ${data.phone}</p>
+          <p><b>Email:</b> ${data.email}</p>
+        </div>
+
+        <div class="order">
+          <h3>Chi tiết đơn</h3>
+          <table>
+            <tr>
+              <th>Sản phẩm</th>
+              <th>Size</th>
+              <th>SL</th>
+              <th>Giá</th>
+              <th>T.Tiền</th>
+            </tr>`;
+
+            data.cart.forEach(i => {
+                html += `
+          <tr>
+            <td>${i.name}</td>
+            <td>${i.size || '-'}</td>
+            <td>${i.quantity}</td>
+            <td>${i.price.toLocaleString()}đ</td>
+            <td>${(i.price * i.quantity).toLocaleString()}đ</td>
+          </tr>`;
+            });
+
+            html += `
+            <tr>
+              <td colspan="4" style="text-align:right"><b>Tổng cộng</b></td>
+              <td><b>${data.total.toLocaleString()}đ</b></td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="btns">
+          <button onclick="location.href='ao.html'">🛍️ Mua tiếp</button>
+          <button onclick="location.href='index.html'">🏠 Về trang chủ</button>
+        </div>
+      `;
+
+            box.innerHTML = html;
+        });
+    </script>
+
+</body>
+
+</html>
