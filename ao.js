@@ -73,7 +73,7 @@ window.onload = function () {
         });
 
         //  skiện cho nút Thêm giỏ hàng
-        listEl.querySelectorAll(".btn-cart").forEach(btn => {
+        listEl.querySelectorAll(".add-cart-btn").forEach(btn => {
             btn.onclick = () => {
                 const id = Number(btn.dataset.id);
                 const product = sanPhamNoiBat.find(x => x.id === id);
