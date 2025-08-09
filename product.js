@@ -126,5 +126,163 @@ const sanPhamNoiBat = [
       "img/sp8.2.webp",
       "img/sp8.4.webp"
     ]
+  },
+  {
+    id: 9,
+    name: "Áo Khoác Bomber - BMB001",
+    code: "BMB001",
+    category: "Áo Khoác",
+    price: 550000,
+    color: "#1a1a1a",
+    sizes: ["S", "M", "L", "XL"],
+    description: "Áo khoác bomber thời trang, chất vải dù chống gió, phối bo gân trẻ trung.",
+    image: "img/sp9.0.webp",
+    images: [
+      "img/sp9.1.webp",
+      "img/sp9.2.webp",
+      "img/sp9.0.webp"
+    ]
+  },
+  {
+    id: 10,
+    name: "Quần Jeans Slim Fit - JNS001",
+    code: "JNS001",
+    category: "Quần Jeans",
+    price: 480000,
+    color: "#2f2f2f",
+    sizes: ["28", "29", "30", "31", "32", "34"],
+    description: "Quần jeans dáng slim fit ôm vừa, chất denim co giãn, thoải mái khi mặc.",
+    image: "img/sp10.0.webp",
+    images: [
+      "img/sp10.1.webp",
+      "img/sp10.2.webp",
+      "img/sp10.0.webp"
+    ]
+  },
+  {
+    id: 11,
+    name: "Áo Thun Oversize - OVZ001",
+    code: "OVZ001",
+    category: "T-Shirt",
+    price: 350000,
+    color: "#ffffff",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    description: "Áo thun oversize unisex, phong cách streetwear, dễ phối đồ.",
+    image: "img/sp11.0.webp",
+    images: [
+      "img/sp11.1.webp",
+      "img/sp11.2.webp",
+      "img/sp11.0.webp"
+    ]
+  },
+  {
+    id: 12,
+    name: "Áo Polo Kẻ Sọc - PLK001",
+    code: "PLK001",
+    category: "Polo",
+    price: 420000,
+    color: "#0c4a6e",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    description: "Áo polo kẻ sọc trẻ trung, cổ bẻ, chất liệu cotton co giãn.",
+    image: "img/sp12.0.webp",
+    images: [
+      "img/sp12.1.webp",
+      "img/sp12.2.webp",
+      "img/sp12.0.webp"
+    ]
+  },
+  {
+    id: 13,
+    name: "Áo Khoác Denim - DKJ001",
+    code: "DKJ001",
+    category: "Áo Khoác",
+    price: 600000,
+    color: "#3d3d3d",
+    sizes: ["S", "M", "L", "XL"],
+    description: "Áo khoác denim bụi bặm, phong cách vintage, phối túi trước tiện dụng.",
+    image: "img/sp13.0.webp",
+    images: [
+      "img/sp13.1.webp",
+      "img/sp13.2.webp",
+      "img/sp13.0.webp"
+    ]
+  },
+  {
+    id: 14,
+    name: "Quần Short Kaki - SHK001",
+    code: "SHK001",
+    category: "Quần Short",
+    price: 300000,
+    color: "#a16207",
+    sizes: ["S", "M", "L", "XL"],
+    description: "Quần short kaki năng động, thoải mái, phù hợp cho mùa hè.",
+    image: "img/sp14.0.webp",
+    images: [
+      "img/sp14.1.webp",
+      "img/sp14.2.webp",
+      "img/sp14.0.webp"
+    ]
+  },
+  {
+    id: 15,
+    name: "Áo Sơ Mi Caro - SRC001",
+    code: "SRC001",
+    category: "Sơ Mi",
+    price: 450000,
+    color: "#92400e",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    description: "Áo sơ mi caro cổ điển, dễ phối quần jeans hoặc quần tây.",
+    image: "img/sp15.0.webp",
+    images: [
+      "img/sp15.1.webp",
+      "img/sp15.2.webp",
+      "img/sp15.0.webp"
+    ]
+  },
+  {
+    id: 16,
+    name: "Túi Tote Canvas - TTC001",
+    code: "TTC001",
+    category: "Phụ kiện",
+    price: 180000,
+    color: "#f5f5f5",
+    sizes: [],
+    description: "Túi tote canvas bền đẹp, phong cách tối giản, thân thiện môi trường.",
+    image: "img/sp16.0.webp",
+    images: [
+      "img/sp16.0.webp"
+    ]
+  },
+  {
+    id: 17,
+    name: "Áo Khoác Gió - AKG001",
+    code: "AKG001",
+    category: "Áo Khoác",
+    price: 500000,
+    color: "#0e7490",
+    sizes: ["S", "M", "L", "XL"],
+    description: "Áo khoác gió nhẹ, chống nước, thích hợp cho các hoạt động ngoài trời.",
+    image: "img/sp17.0.webp",
+    images: [
+      "img/sp17.1.webp",
+      "img/sp17.2.webp",
+      "img/sp17.0.webp"
+    ]
+  },
+  {
+    id: 18,
+    name: "Áo T-Shirt Basic - TSB001",
+    code: "TSB001",
+    category: "T-Shirt",
+    price: 280000,
+    color: "#d4d4d8",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    description: "Áo thun basic trơn, form regular, dễ phối với nhiều trang phục.",
+    image: "img/sp18.0.webp",
+    images: [
+      "img/sp18.1.webp",
+      "img/sp18.2.webp",
+      "img/sp18.0.webp"
+    ]
   }
 ];

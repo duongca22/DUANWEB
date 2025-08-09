@@ -71,139 +71,20 @@
       <section class="product-area" id="productList">
         <!-- Đổ dữ liệu sp -->
       </section>
+      <div class="thanh-phan-trang">
+        <div class="thong-tin-trang">
+          <span id="thong-tin-trang"></span>
+        </div>
+        <div class="pagination-controls">
+          <button id="btn-prev">‹</button>
+          <div id="page-numbers"></div>
+          <button id="btn-next">›</button>
+        </div>
+      </div>
     </div>
   </div>
   <script src="product.js"></script>
-  <script>
-    window.onload = function () {
-      let selectedCategory = "all";
-      let currentKeyword = "";
-      let currentSort = "";
-      const productList = document.getElementById("productList");
-      let selectedProductId = null;
-
-      function showBox(sizes) {
-        document.getElementById("sizes").innerHTML = sizes.map(size => `
-      <label><input type="radio" name="s" value="${size}"> ${size}</label><br>
-    `).join("");
-        document.getElementById("sizeBox").style.display = "block";
-      }
-
-      function hideBox() {
-        document.getElementById("sizeBox").style.display = "none";
-      }
-
-      document.getElementById("close").addEventListener("click", hideBox);
-
-      document.getElementById("ok").addEventListener("click", () => {
-        const selected = document.querySelector('input[name="s"]:checked');
-        if (!selected) {
-          alert("Vui lòng chọn size!");
-          return;
-        }
-        const size = selected.value;
-        addToCart(selectedProductId, size);
-        hideBox();
-      });
-
-      function addToCart(productId, size = null) {
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const product = sanPhamNoiBat.find(p => p.id === productId);
-        if (!product) {
-          console.error("Sản phẩm không tồn tại:", productId);
-          return;
-        }
-        let existingItem = cart.find(item => item.id === productId && item.size === size);
-        if (existingItem) {
-          existingItem.quantity += 1;
-        } else {
-          cart.push({ ...product, size, quantity: 1 });
-        }
-        localStorage.setItem("cart", JSON.stringify(cart));
-        alert(`Đã thêm vào giỏ hàng${size ? ` (Size ${size})` : ''}!`);
-      }
-
-      function renderProducts(products) {
-        productList.innerHTML = "";
-        if (products.length === 0) {
-          productList.innerHTML = `<div style="padding:36px 0;color:#888;text-align:center">Không có sản phẩm.</div>`;
-          return;
-        }
-        products.forEach(p => {
-          const el = document.createElement("div");
-          el.className = "product-item";
-          el.innerHTML = `
-        <div class="product-image">
-          <img src="${p.image}" alt="${p.name}" />
-          <div class="btn-group">
-            <button class="add-cart-btn" data-id="${p.id}">Thêm giỏ hàng</button>
-            <a class="detail-btn" href="chitiet.html?id=${p.id}">Chi tiết</a>
-          </div>
-        </div>
-        <h5>${p.name}</h5>
-        <p>${p.price.toLocaleString()} ₫</p>
-        <i class="fa-regular fa-heart heart-icon"></i>
-      `;
-          productList.appendChild(el);
-          el.querySelector('.add-cart-btn').addEventListener('click', function () {
-            selectedProductId = p.id;
-            if (p.sizes && p.sizes.length > 0) {
-              showBox(p.sizes);
-            } else {
-              addToCart(p.id); // không có size thì thêm luôn
-            }
-          });
-        });
-      }
-
-      function filterProducts() {
-        let filtered = sanPhamNoiBat.filter(sp =>
-          sp.category === "Polo" ||
-          sp.category === "Sơ Mi" ||
-          sp.category === "T-Shirt" ||
-          sp.category === "Hoodie"
-        );
-        if (selectedCategory !== "all") {
-          filtered = filtered.filter(sp => sp.category === selectedCategory);
-        }
-        if (currentKeyword) {
-          filtered = filtered.filter(sp => sp.name.toLowerCase().includes(currentKeyword.toLowerCase()));
-        }
-        if (currentSort === "asc") {
-          filtered = filtered.slice().sort((a, b) => a.price - b.price);
-        } else if (currentSort === "desc") {
-          filtered = filtered.slice().sort((a, b) => b.price - a.price);
-        }
-        renderProducts(filtered);
-      }
-
-      document.querySelectorAll('#categoryList li').forEach(li => {
-        li.addEventListener('click', () => {
-          document.querySelectorAll('#categoryList li').forEach(item => item.classList.remove("active"));
-          li.classList.add("active");
-          selectedCategory = li.getAttribute('data-category');
-          filterProducts();
-        });
-      });
-
-      const searchInput = document.getElementById("searchInput");
-      if (searchInput) {
-        searchInput.addEventListener("input", (e) => {
-          currentKeyword = e.target.value.trim();
-          filterProducts();
-        });
-      }
-
-      const oSapXepTheoGia = document.getElementById("sapXepTheoGia");
-      oSapXepTheoGia.addEventListener("change", () => {
-        currentSort = oSapXepTheoGia.value;
-        filterProducts();
-      });
-
-      filterProducts();
-    };
-  </script>
-
+  <script src="ao.js"></script>
   <!-- size -->
   <div id="sizeBox" class="box">
     <div class="box-content">
