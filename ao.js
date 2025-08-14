@@ -82,11 +82,11 @@ window.onload = function () {
                     selectedProductId = id;
                     openSizeBox(product.sizes);
                 } else {
-                    addToCart(id); // không có size thì thêm luôn
+                    addToCart(id);
                 }
             };
         });
-    }
+    }////////git
 
     // phân trag
     function renderPagination() {
